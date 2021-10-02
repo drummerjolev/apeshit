@@ -12,9 +12,11 @@ const Analyzer = forwardRef<THREE.Audio<AudioNode>>((props, forwardedRef) => {
   const group = useRef();
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const { nodes, materials, animations } = useGLTF('/testball6.glb');
+  const { nodes, materials, animations } = useGLTF('/testball9.gltf');
   const { actions } = useAnimations(animations, group);
-  console.log(actions);
+  useEffect(() => {
+    actions['Displace.001Action']?.play();
+  });
 
   useEffect(() => {
     if (sound.current) {
@@ -23,38 +25,31 @@ const Analyzer = forwardRef<THREE.Audio<AudioNode>>((props, forwardedRef) => {
   }, []);
   useFrame(() => {
     if (analyser.current) {
-      const data = analyser.current.getAverageFrequency();
+      // const data = analyser.current.getAverageFrequency();
 
-      if (mesh.current) {
-        mesh.current.scale.x =
-          mesh.current.scale.y =
-          mesh.current.scale.z =
-            (data / 100) * 0.4 + 0.6;
+      if (mesh.current && Object.keys(actions).length > 0) {
+        actions['KeyAction.003']?.play();
+        // actions['KeyAction.003']?.play();
+        // mesh.current.scale.x =
+        //   mesh.current.scale.y =
+        //   mesh.current.scale.z =
+        //     (data / 100) * 0.4 + 0.6;
       }
     }
   });
 
   return (
-    <group ref={group} dispose={null}>
-      <mesh geometry={nodes.Displace.geometry} material={materials.Material} name="Displace" />
+    <group ref={group} {...props} dispose={null}>
       <mesh
         ref={mesh}
-        geometry={nodes.Sphere.geometry}
-        material={materials['Material.001']}
-        scale={0.86}
-      />
-      <mesh
-        geometry={nodes.Displace001.geometry}
-        material={materials['Material.003']}
-        morphTargetDictionary={nodes.Displace001.morphTargetDictionary}
-        morphTargetInfluences={nodes.Displace001.morphTargetInfluences}
-        name="Displace001"
-        scale={0.25}
+        geometry={nodes.Displace.geometry}
+        material={materials.Material}
+        scale={1.27}
       />
     </group>
   );
 });
 
-useGLTF.preload('/testball5.glb');
+useGLTF.preload('/testball9.gltf');
 
 export default Analyzer;

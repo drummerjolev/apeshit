@@ -23,3 +23,8 @@ body {
 button.colorful {
   background: linear-gradient(93.87deg, #ff3773 0%, #2d56e9 100%);
 }
+
+button.colorful:hover {
+  background: white;
+  color: black;
+}
