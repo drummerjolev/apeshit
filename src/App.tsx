@@ -3,7 +3,6 @@ import React, { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 
 import MinBear from './Minbeartest';
-import SplineTest from './Spline-test';
 
 const App = (): React.ReactElement => {
   return (
@@ -12,7 +11,6 @@ const App = (): React.ReactElement => {
         <Suspense fallback="Loading">
           <Canvas>
             <MinBear />
-            <SplineTest />
             <ambientLight />
             <pointLight position={[10, 10, 10]} />
           </Canvas>
