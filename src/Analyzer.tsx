@@ -2,7 +2,7 @@
 import * as THREE from 'three';
 import React, { forwardRef, useEffect, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
-import { useGLTF } from '@react-three/drei';
+import { useAnimations, useGLTF } from '@react-three/drei';
 
 const Analyzer = forwardRef<THREE.Audio<AudioNode>>((props, forwardedRef) => {
   const sound = forwardedRef as React.RefObject<THREE.Audio<AudioNode>>;
@@ -12,7 +12,9 @@ const Analyzer = forwardRef<THREE.Audio<AudioNode>>((props, forwardedRef) => {
   const group = useRef();
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
-  const { nodes, materials } = useGLTF('/testball5.glb');
+  const { nodes, materials, animations } = useGLTF('/testball6.glb');
+  const { actions } = useAnimations(animations, group);
+  console.log(actions);
 
   useEffect(() => {
     if (sound.current) {
@@ -34,11 +36,20 @@ const Analyzer = forwardRef<THREE.Audio<AudioNode>>((props, forwardedRef) => {
 
   return (
     <group ref={group} dispose={null}>
+      <mesh geometry={nodes.Displace.geometry} material={materials.Material} name="Displace" />
       <mesh
         ref={mesh}
-        geometry={nodes.Cube.geometry}
+        geometry={nodes.Sphere.geometry}
         material={materials['Material.001']}
-        rotation={[0.94, -0.22, 0.61]}
+        scale={0.86}
+      />
+      <mesh
+        geometry={nodes.Displace001.geometry}
+        material={materials['Material.003']}
+        morphTargetDictionary={nodes.Displace001.morphTargetDictionary}
+        morphTargetInfluences={nodes.Displace001.morphTargetInfluences}
+        name="Displace001"
+        scale={0.25}
       />
     </group>
   );

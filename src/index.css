@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background: linear-gradient(-45deg, #3b0c1a, #0a0607, #145066);
+  background-size: 600% 600%;
+  animation: gradient 40s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+button.colorful {
+  background: linear-gradient(93.87deg, #ff3773 0%, #2d56e9 100%);
+}
