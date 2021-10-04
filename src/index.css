@@ -6,6 +6,7 @@ body {
   background: linear-gradient(-45deg, #3b0c1a, #0a0607, #145066);
   background-size: 600% 600%;
   animation: gradient 40s ease infinite;
+  font-family: 'Italiana', 'serif';
 }
 
 @keyframes gradient {

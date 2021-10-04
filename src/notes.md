@@ -1,8 +1,3 @@
-// import { Spline } from 'react-spline';
-
-// import MinBear from './Minbeartest';
-// import SCENE_OBJECT from './scene.json';
-
 // import { PhantomProvider, SolanaWindow } from './typings';
 
 // const getProvider = (): PhantomProvider | undefined => {
