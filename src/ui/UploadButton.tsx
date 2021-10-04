@@ -45,7 +45,7 @@ const UploadButton = ({
         type="file"
         onChange={handleInputChange}
       />
-      <Button label="Load song" onClick={handleUpload} />
+      <Button label="DROP THE BEATS" onClick={handleUpload} />
     </>
   );
 };

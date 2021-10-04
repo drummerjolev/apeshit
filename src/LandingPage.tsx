@@ -1,6 +1,7 @@
 // HMJ
 
 import UploadButton from './ui/UploadButton';
+import VerticalDivider from './ui/VerticalDivider';
 
 type LandingPagePropsType = {
   setAudioFile: (base64: string) => void;
@@ -11,22 +12,16 @@ const LandingPage = ({
   setAudioFile,
   setIsUploading,
 }: LandingPagePropsType): React.ReactElement<LandingPagePropsType> => (
-  <div className="pt-12 text-center text-white">
-    <h1 className="text-3xl font-semibold">Welcome, Music Maker.</h1>
-    <div className="p-8 space-y-2">
-      <p>
-        We get it. You spend your time creating awesome music. You also want to create an{' '}
-        <a className="font-bold" href="https://en.wikipedia.org/wiki/Non-fungible_token">
-          NFT
-        </a>{' '}
-        for your song.
-      </p>
-      <p>This tool generates beautiful, unique art matched to your music.</p>
-    </div>
+  <div className="flex flex-col items-center p-12  text-center text-white">
+    <h1 className="pb-2 w-98">Beautiful, bespoke music visuals in an instant.</h1>
+    <VerticalDivider />
+    <h1 className="pb-2 w-98">Available as collectibles for your fans.</h1>
+    <VerticalDivider />
     <UploadButton setAudioFile={setAudioFile} setIsUploading={setIsUploading} />
-    <p className="pt-4 text-xs">
-      Use any <b>.mp3</b> or <b>.wav</b> file
-    </p>
+    <div className="pt-4 space-y-1 font-roboto">
+      <p className="text-xs">.wav or .mp3</p>
+      <p className="text-xs">We do not store your music.</p>
+    </div>
   </div>
 );
 

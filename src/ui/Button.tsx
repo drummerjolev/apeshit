@@ -8,7 +8,7 @@ type ButtonPropsType = {
 
 const Button = ({ label, onClick }: ButtonPropsType): React.ReactElement => (
   <button
-    className="px-4 py-2 font-bold text-white rounded-lg colorful hover:bg-white"
+    className="px-8 py-4 text-3xl text-white border-2 rounded-full active:white font-anton hover:bg-white hover:text-black"
     onClick={onClick}
   >
     {label}

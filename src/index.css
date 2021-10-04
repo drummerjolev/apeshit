@@ -2,10 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  h1 {
+    @apply text-7xl;
+    @apply leading-tight;
+    @apply font-light;
+  }
+}
+
 body {
-  background: linear-gradient(-45deg, #3b0c1a, #0a0607, #145066);
-  background-size: 600% 600%;
-  animation: gradient 40s ease infinite;
+  background-color: black;
   font-family: 'Italiana', 'serif';
 }
 
@@ -19,13 +25,4 @@ body {
   100% {
     background-position: 0% 50%;
   }
-}
-
-button.colorful {
-  background: linear-gradient(93.87deg, #ff3773 0%, #2d56e9 100%);
-}
-
-button.colorful:hover {
-  background: white;
-  color: black;
 }
