@@ -5,6 +5,7 @@ module.exports = {
   theme: {
     fontFamily: {
       anton: ['Anton', 'sans'],
+      italiana: ['Italiana', 'serif'],
       roboto: ['Roboto', 'sans'],
     },
     extend: {

@@ -18,7 +18,7 @@ const LandingPage = ({
     <h1 className="pb-2 w-98">Available as collectibles for your fans.</h1>
     <VerticalDivider />
     <UploadButton setAudioFile={setAudioFile} setIsUploading={setIsUploading} />
-    <div className="pt-4 space-y-1 font-roboto">
+    <div className="pt-4 space-y-1">
       <p className="text-xs">.wav or .mp3</p>
       <p className="text-xs">We do not store your music.</p>
     </div>
