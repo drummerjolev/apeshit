@@ -6,7 +6,7 @@ const FOOTER_CONTENTS = [
   {
     role: 'Graphic Design',
     name: 'Honey',
-    link: '',
+    link: 'https://www.linkedin.com/in/honeychang/',
   },
   {
     role: 'Product Design & 3D Art',
