@@ -28,10 +28,10 @@ const AnimationPage = ({
   };
 
   return (
-    <div className="flex flex-col items-center h-98">
+    <div className="flex flex-col items-center h-full md:h-98">
       <p className="py-12">{audioFileName}</p>
-      <div className="flex flex-row w-full px-12 space-x-4">
-        <div className="w-2/3 h-98">
+      <div className="flex flex-col w-full px-4 md:px-12 md:flex-row md:space-x-4">
+        <div className="w-full h-64 md:h-98 md:w-2/3">
           <Suspense fallback="Loading">
             <Canvas camera={{ position: [0, 0, 2], far: 50 }}>
               {audioFile != null && (
@@ -46,8 +46,8 @@ const AnimationPage = ({
           </Suspense>
         </div>
 
-        <div className="flex flex-col items-center justify-center w-1/3 py-8">
-          <div className="text-xs grid grid-cols-2 gap-4">
+        <div className="flex flex-col items-center justify-center w-full py-8 md:w-1/3">
+          <div className="text-sm md:text-xs grid grid-cols-2 gap-4">
             {/* Row 1 */}
             <p className="text-gray-400">Wireframe</p>
             <label className="flex items-center cursor-pointer">
