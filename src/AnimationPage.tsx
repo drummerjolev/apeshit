@@ -36,7 +36,7 @@ const AnimationPage = ({
             <Canvas camera={{ position: [0, 0, 2], far: 50 }}>
               {audioFile != null && (
                 <>
-                  <PlaySound isLinear={isLinear} url={audioFile} />
+                  <PlaySound hasRainbowColor={hasColor} isLinear={isLinear} url={audioFile} />
                   <OrbitControls enableZoom={false} />
                   <ambientLight />
                   <pointLight position={[10, 10, 10]} />

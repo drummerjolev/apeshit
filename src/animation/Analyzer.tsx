@@ -6,10 +6,11 @@ import { useAnimations, useGLTF } from '@react-three/drei';
 
 type AnalyzerPropsType = {
   isLinear: boolean;
+  hasRainbowColor: boolean;
 };
 
 const Analyzer = forwardRef<THREE.Audio<AudioNode>, AnalyzerPropsType>(
-  ({ isLinear }, forwardedRef) => {
+  ({ hasRainbowColor, isLinear }, forwardedRef) => {
     const sound = forwardedRef as React.RefObject<THREE.Audio<AudioNode>>;
     const mesh = useRef<THREE.Mesh>(null!);
     const analyser = useRef<THREE.AudioAnalyser>(null!);
@@ -39,7 +40,7 @@ const Analyzer = forwardRef<THREE.Audio<AudioNode>, AnalyzerPropsType>(
       if (analyser.current) {
         const data = analyser.current.getAverageFrequency();
 
-        if (mesh.current && Object.keys(actions).length > 0 && data >= 50) {
+        if (mesh.current && Object.keys(actions).length > 0 && data >= 30) {
           mesh.current.scale.x =
             mesh.current.scale.y =
             mesh.current.scale.z =
@@ -62,7 +63,11 @@ const Analyzer = forwardRef<THREE.Audio<AudioNode>, AnalyzerPropsType>(
             // TODO: share const with scale.x/y/z change above
             scale={0.27}
           >
-            <meshNormalMaterial wireframe={isLinear} wireframeLinewidth={isLinear ? 3 : 1} />
+            {hasRainbowColor ? (
+              <meshNormalMaterial color="purple" wireframe={isLinear} />
+            ) : (
+              <meshPhongMaterial color="purple" wireframe={isLinear} />
+            )}
           </mesh>
         </group>
       </group>
