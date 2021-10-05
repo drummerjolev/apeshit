@@ -6,11 +6,13 @@ import Button from './Button';
 
 type UploadButtonPropsType = {
   setAudioFile: (base64: string) => void;
+  setAudioFileName: (name: string) => void;
   setIsUploading: (isUploading: boolean) => void;
 };
 
 const UploadButton = ({
   setAudioFile,
+  setAudioFileName,
   setIsUploading,
 }: UploadButtonPropsType): React.ReactElement => {
   const inputFileRef = useRef<HTMLInputElement>(null);
@@ -19,6 +21,7 @@ const UploadButton = ({
     if (event.target != null && event.target.files && event.target.files.length > 0) {
       setIsUploading(true);
       const reader = new FileReader();
+      setAudioFileName(event.target.files[0].name);
       reader.readAsDataURL(event.target.files[0]);
       reader.onload = () => {
         const base64 = reader.result ?? '';
@@ -45,7 +48,7 @@ const UploadButton = ({
         type="file"
         onChange={handleInputChange}
       />
-      <Button label="DROP THE BEATS" onClick={handleUpload} />
+      <Button label="Drop the beats" large onClick={handleUpload} />
     </>
   );
 };

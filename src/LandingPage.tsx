@@ -5,11 +5,13 @@ import VerticalDivider from './ui/VerticalDivider';
 
 type LandingPagePropsType = {
   setAudioFile: (base64: string) => void;
+  setAudioFileName: (name: string) => void;
   setIsUploading: (isUploading: boolean) => void;
 };
 
 const LandingPage = ({
   setAudioFile,
+  setAudioFileName,
   setIsUploading,
 }: LandingPagePropsType): React.ReactElement<LandingPagePropsType> => (
   <div className="flex flex-col items-center p-12  text-center text-white">
@@ -17,7 +19,11 @@ const LandingPage = ({
     <VerticalDivider />
     <h1 className="pb-2 w-98">Available as collectibles for your fans.</h1>
     <VerticalDivider />
-    <UploadButton setAudioFile={setAudioFile} setIsUploading={setIsUploading} />
+    <UploadButton
+      setAudioFile={setAudioFile}
+      setAudioFileName={setAudioFileName}
+      setIsUploading={setIsUploading}
+    />
     <div className="pt-4 space-y-1">
       <p className="text-xs">.wav or .mp3</p>
       <p className="text-xs">We do not store your music.</p>

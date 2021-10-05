@@ -6,6 +6,7 @@ import LandingPage from './LandingPage';
 import AnimationPage from './AnimationPage';
 
 const App = (): React.ReactElement => {
+  const [audioFileName, setAudioFileName] = useState<string | null>(null);
   const [audioFile, setAudioFile] = useState<string | null>(null);
   const [isUploading, setIsUploading] = useState(false);
 
@@ -20,10 +21,14 @@ const App = (): React.ReactElement => {
       <div className="flex-grow w-full">
         {isUploading ? (
           <p className="pt-32 text-xs text-center text-white">Generating visuals</p>
-        ) : audioFile != null ? (
-          <AnimationPage audioFile={audioFile} />
+        ) : audioFile != null && audioFileName != null ? (
+          <AnimationPage audioFile={audioFile} audioFileName={audioFileName} />
         ) : (
-          <LandingPage setAudioFile={setAudioFile} setIsUploading={setIsUploading} />
+          <LandingPage
+            setAudioFile={setAudioFile}
+            setAudioFileName={setAudioFileName}
+            setIsUploading={setIsUploading}
+          />
         )}
       </div>
       <Footer />

@@ -9,6 +9,12 @@
     @apply font-light;
     @apply font-italiana;
   }
+
+  h1,
+  h2,
+  p {
+    @apply text-white;
+  }
 }
 
 body {
