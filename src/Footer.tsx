@@ -25,7 +25,7 @@ const FOOTER_CONTENTS = [
 ];
 
 const Footer = (): React.ReactElement => (
-  <footer className="flex flex-row justify-between h-full px-16 pt-8 pb-24 mt-8 bg-transparent space-x-4">
+  <footer className="flex flex-col justify-between h-full px-8 pt-8 pb-12 mt-8 bg-transparent md:px-16 md:pb-24 md:flex-row md:space-x-4 space-y-8 md:space-y-0">
     {FOOTER_CONTENTS.map((person) => (
       <div key={person.name} className="font-sans text-sm text-center text-white">
         <p className="pb-2 font-extrabold">{person.role.toUpperCase()}</p>
