@@ -4,6 +4,8 @@ import React, { forwardRef, useEffect, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useAnimations, useGLTF } from '@react-three/drei';
 
+const DEFAULT_MESH_SCALE = 0.25;
+
 type AnalyzerPropsType = {
   isLinear: boolean;
   hasRainbowColor: boolean;
@@ -25,7 +27,7 @@ const Analyzer = forwardRef<THREE.Audio<AudioNode>, AnalyzerPropsType>(
         const morphs = mesh.current.morphTargetDictionary;
 
         if (morphs != null) {
-          morphs.Displace = 0.5;
+          morphs.Displace = 0.3;
           mesh.current.morphTargetInfluences = [0.05];
         }
       }
@@ -44,7 +46,7 @@ const Analyzer = forwardRef<THREE.Audio<AudioNode>, AnalyzerPropsType>(
           mesh.current.scale.x =
             mesh.current.scale.y =
             mesh.current.scale.z =
-              (data / 100) * 0.02 + 0.25;
+              (data / 100) * 0.02 + DEFAULT_MESH_SCALE;
         }
       }
     });
@@ -60,13 +62,12 @@ const Analyzer = forwardRef<THREE.Audio<AudioNode>, AnalyzerPropsType>(
             morphTargetInfluences={nodes.Globe_1.morphTargetInfluences}
             name="Globe_1"
             position={[0, 0.49, 0]}
-            // TODO: share const with scale.x/y/z change above
-            scale={0.27}
+            scale={DEFAULT_MESH_SCALE + 0.02}
           >
             {hasRainbowColor ? (
-              <meshNormalMaterial color="purple" wireframe={isLinear} />
+              <meshNormalMaterial wireframe={isLinear} />
             ) : (
-              <meshPhongMaterial color="purple" wireframe={isLinear} />
+              <meshPhongMaterial color="#505050" shininess={10} wireframe={isLinear} />
             )}
           </mesh>
         </group>
