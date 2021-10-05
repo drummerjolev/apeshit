@@ -22,7 +22,7 @@ const PlaySound = ({
 
   return (
     <Suspense fallback={null}>
-      <PositionalAudio ref={sound} url={url} autoplay />
+      <PositionalAudio ref={sound} url={url} autoplay loop />
       <Analyzer ref={sound} hasRainbowColor={hasRainbowColor} isLinear={isLinear} />
     </Suspense>
   );
