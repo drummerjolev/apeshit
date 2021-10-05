@@ -12,7 +12,8 @@
 
   h1,
   h2,
-  p {
+  p,
+  span {
     @apply text-white;
   }
 }
