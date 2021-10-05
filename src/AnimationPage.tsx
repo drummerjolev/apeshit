@@ -28,7 +28,7 @@ const AnimationPage = ({
   };
 
   return (
-    <div className="flex flex-col items-center h-full md:h-98">
+    <div className="flex flex-col items-center">
       <p className="py-12">{audioFileName}</p>
       <div className="flex flex-col w-full px-4 md:px-12 md:flex-row md:space-x-4">
         <div className="w-full h-64 md:h-98 md:w-2/3">
