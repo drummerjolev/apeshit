@@ -18,7 +18,9 @@ const App = (): React.ReactElement => {
       }}
     >
       <div className="flex-grow w-full">
-        {isUploading && audioFile != null ? (
+        {isUploading ? (
+          <p className="pt-32 text-xs text-center text-white">Generating visuals</p>
+        ) : audioFile != null ? (
           <AnimationPage audioFile={audioFile} />
         ) : (
           <LandingPage setAudioFile={setAudioFile} setIsUploading={setIsUploading} />
