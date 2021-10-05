@@ -14,10 +14,10 @@ const LandingPage = ({
   setAudioFileName,
   setIsUploading,
 }: LandingPagePropsType): React.ReactElement<LandingPagePropsType> => (
-  <div className="flex flex-col items-center p-12  text-center text-white">
-    <h1 className="pb-2 w-98">Beautiful, bespoke music visuals in an instant.</h1>
+  <div className="flex flex-col items-center p-12 text-center text-white">
+    <h1 className="w-full pb-2 md:w-98">Beautiful, bespoke music visuals in an instant.</h1>
     <VerticalDivider />
-    <h1 className="pb-2 w-98">Available as collectibles for your fans.</h1>
+    <h1 className="w-full pb-2 text-center">Available as collectibles for your fans.</h1>
     <VerticalDivider />
     <UploadButton
       setAudioFile={setAudioFile}

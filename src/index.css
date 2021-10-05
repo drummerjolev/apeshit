@@ -4,7 +4,7 @@
 
 @layer base {
   h1 {
-    @apply text-7xl;
+    @apply text-5xl;
     @apply leading-tight;
     @apply font-light;
     @apply font-italiana;
@@ -15,6 +15,12 @@
   p,
   span {
     @apply text-white;
+  }
+}
+
+@screen md {
+  h1 {
+    @apply text-7xl;
   }
 }
 
