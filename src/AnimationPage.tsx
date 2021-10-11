@@ -18,6 +18,7 @@ const AnimationPage = ({
 }: AnimationPagePropsType): React.ReactElement<AnimationPagePropsType> => {
   const [isLinear, setIsLinear] = useState(true);
   const [hasColor, setHasColor] = useState(true);
+  const [areInstructionsShown, setAreInstructionsShown] = useState(false);
 
   const handleToggleLinear = () => {
     setIsLinear((previousValue) => !previousValue);
@@ -25,6 +26,10 @@ const AnimationPage = ({
 
   const handleToggleColor = () => {
     setHasColor((previousValue) => !previousValue);
+  };
+
+  const handleMintNFTClick = () => {
+    setAreInstructionsShown(true);
   };
 
   return (
@@ -64,8 +69,59 @@ const AnimationPage = ({
         </div>
       </div>
 
-      <div className="p-16">
-        <Button label="Mint NFT" />
+      <div className="p-12">
+        {areInstructionsShown ? (
+          <>
+            <p>Instructions to mint an NFT:</p>
+            <ol className="p-4 space-y-3">
+              <li>
+                Use a{' '}
+                <a
+                  href="https://chrome.google.com/webstore/detail/scrnli-screenshot-screen/ijejnggjjphlenbhmjhhgcdpehhacaal"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  screen recorder
+                </a>{' '}
+                to record the animation above
+              </li>
+              <li>
+                Upload your file to a decentralized storage platform, such as IPFS or Arweave. You
+                can use{' '}
+                <a href="https://www.pinata.cloud/" rel="noreferrer" target="_blank">
+                  Pinata
+                </a>
+                .
+              </li>
+              <li>
+                Create a <i>manifest.json</i> file, according to the{' '}
+                <a
+                  href="https://medium.com/metaplex/metaplex-metadata-standard-45af3d04b541"
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Metaplex
+                </a>{' '}
+                standard
+              </li>
+              <li>
+                Create your NFT on the Solana blockchain. You can use{' '}
+                <a href="https://github.com/InnerMindDAO/MintUI" rel="noreferrer" target="_blank">
+                  MintUI
+                </a>
+                .
+              </li>
+              <li>
+                Put your NFT up for sale, e.g. on{' '}
+                <a href="https://digitaleyes.market/" rel="noreferrer" target="_blank">
+                  Digital Eyes
+                </a>
+              </li>
+            </ol>
+          </>
+        ) : (
+          <Button label="Mint NFT" onClick={handleMintNFTClick} />
+        )}
       </div>
     </div>
   );

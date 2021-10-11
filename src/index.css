@@ -13,8 +13,17 @@
   h1,
   h2,
   p,
+  li,
   span {
     @apply text-white;
+  }
+
+  ol {
+    list-style-type: upper-roman;
+  }
+
+  li a {
+    @apply underline;
   }
 }
 
