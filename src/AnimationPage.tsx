@@ -116,7 +116,11 @@ const AnimationPage = ({
         />
       </div>
 
-      <Button disabled={areInstructionsShown} label="Mint NFT" onClick={handleMintNFTClick} />
+      <Button
+        disabled={areInstructionsShown}
+        label={areInstructionsShown ? 'Coming Soon' : 'Mint NFT'}
+        onClick={handleMintNFTClick}
+      />
 
       {areInstructionsShown && (
         <>
