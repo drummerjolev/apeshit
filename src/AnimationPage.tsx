@@ -6,11 +6,52 @@ import { Canvas } from '@react-three/fiber';
 
 import PlaySound from './animation/PlaySound';
 import Button from './ui/Button';
+import VerticalDivider from './ui/VerticalDivider';
 
 type AnimationPagePropsType = {
   audioFile: string;
   audioFileName: string;
 };
+
+const INSTRUCTIONS: React.ReactElement[] = [
+  <>
+    Use a{' '}
+    <a
+      href="https://chrome.google.com/webstore/detail/scrnli-screenshot-screen/ijejnggjjphlenbhmjhhgcdpehhacaal"
+      rel="noreferrer"
+      target="_blank"
+    >
+      screen recorder
+    </a>{' '}
+    to record your unique visuals.
+  </>,
+  <>
+    Upload your file to a decentralized storage platform, such as IPFS or Arweave. We recommend{' '}
+    <a href="https://www.pinata.cloud/" rel="noreferrer" target="_blank">
+      Pinata
+    </a>
+    .
+  </>,
+  <>
+    Create a <i>manifest.json</i> file, according to the{' '}
+    <a
+      href="https://medium.com/metaplex/metaplex-metadata-standard-45af3d04b541"
+      rel="noreferrer"
+      target="_blank"
+    >
+      Metaplex
+    </a>{' '}
+    standard. Upload it to IPFS with Pinata.
+  </>,
+  <>
+    Create your NFT on the Solana blockchain. You can use{' '}
+    <a href="https://github.com/InnerMindDAO/MintUI" rel="noreferrer" target="_blank">
+      MintUI
+    </a>
+    .
+  </>,
+  <>Put your NFT up for sale, share with your fans!</>,
+];
 
 const AnimationPage = ({
   audioFile,
@@ -68,61 +109,30 @@ const AnimationPage = ({
           </div>
         </div>
       </div>
+      <Button disabled={areInstructionsShown} label="Mint NFT" onClick={handleMintNFTClick} />
 
-      <div className="p-12">
-        {areInstructionsShown ? (
-          <>
-            <p>Instructions to mint an NFT:</p>
-            <ol className="p-4 space-y-3">
-              <li>
-                Use a{' '}
-                <a
-                  href="https://chrome.google.com/webstore/detail/scrnli-screenshot-screen/ijejnggjjphlenbhmjhhgcdpehhacaal"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  screen recorder
-                </a>{' '}
-                to record the animation above
-              </li>
-              <li>
-                Upload your file to a decentralized storage platform, such as IPFS or Arweave. You
-                can use{' '}
-                <a href="https://www.pinata.cloud/" rel="noreferrer" target="_blank">
-                  Pinata
-                </a>
-                .
-              </li>
-              <li>
-                Create a <i>manifest.json</i> file, according to the{' '}
-                <a
-                  href="https://medium.com/metaplex/metaplex-metadata-standard-45af3d04b541"
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Metaplex
-                </a>{' '}
-                standard
-              </li>
-              <li>
-                Create your NFT on the Solana blockchain. You can use{' '}
-                <a href="https://github.com/InnerMindDAO/MintUI" rel="noreferrer" target="_blank">
-                  MintUI
-                </a>
-                .
-              </li>
-              <li>
-                Put your NFT up for sale, e.g. on{' '}
-                <a href="https://digitaleyes.market/" rel="noreferrer" target="_blank">
-                  Digital Eyes
-                </a>
-              </li>
-            </ol>
-          </>
-        ) : (
-          <Button label="Mint NFT" onClick={handleMintNFTClick} />
-        )}
-      </div>
+      {areInstructionsShown && (
+        <>
+          <div className="flex flex-col items-center px-4 pt-8 space-y-4">
+            <p className="text-center">Oops, we’re still working on one-tap minting!</p>
+            <p className="text-xs">In the meantime, please follow the instructions.</p>
+          </div>
+
+          <VerticalDivider short />
+          <div className="flex flex-col md:space-x-4 md:space-y-0 space-y-8 md:flex-row">
+            {INSTRUCTIONS.map((instruction, index) => (
+              <div
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
+                className="flex flex-row items-center flex-1 px-8 md:p-0 md:flex-col md:space-y-2 space-y-0 space-x-4 md:space-x-0"
+              >
+                <p className="text-lg font-bold font-anton">{index + 1}</p>
+                <p className="text-xs md:text-center">{instruction}</p>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };
