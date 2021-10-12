@@ -31,10 +31,10 @@ const Footer = (): React.ReactElement => (
         <p className="pb-2 font-extrabold">{person.role.toUpperCase()}</p>
         {person.link ? (
           <a href={person.link} rel="noreferrer" target="_blank">
-            <p>{person.name}</p>
+            {person.name}
           </a>
         ) : (
-          <p>{person.name}</p>
+          <>{person.name}</>
         )}
       </div>
     ))}

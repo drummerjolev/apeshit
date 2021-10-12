@@ -17,10 +17,11 @@
     @apply text-white;
   }
 
-  p > a {
+  a {
     @apply text-blue-500;
   }
-  p > a:hover {
+
+  a:hover {
     @apply underline;
   }
 }
