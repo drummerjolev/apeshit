@@ -42,18 +42,23 @@ const Analyzer = forwardRef<THREE.Audio<AudioNode>, AnalyzerPropsType>(
       if (analyser.current) {
         const data = analyser.current.getAverageFrequency();
 
-        if (mesh.current && Object.keys(actions).length > 0 && data >= 30) {
-          mesh.current.scale.x =
-            mesh.current.scale.y =
-            mesh.current.scale.z =
-              (data / 100) * 0.02 + DEFAULT_MESH_SCALE;
+        if (mesh.current && Object.keys(actions).length > 0 && data >= 50) {
+          // mesh.current.scale.x =
+          //   mesh.current.scale.y =
+          //   mesh.current.scale.z =
+          //     (data / 100) * 0.01 + DEFAULT_MESH_SCALE;
+
+          if (mesh.current.morphTargetDictionary) {
+            mesh.current.morphTargetDictionary.Displace = data / 200;
+          }
+          mesh.current.morphTargetInfluences = [data / 400];
         }
       }
     });
 
     return (
       <group ref={group} dispose={null}>
-        <group name="Armature" position={[0, -1.59, 0]} scale={3.23}>
+        <group name="Armature" position={[0, -1, 0]} scale={2.23}>
           <mesh
             ref={mesh}
             geometry={nodes.Globe_1.geometry}
