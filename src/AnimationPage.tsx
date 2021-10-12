@@ -7,6 +7,9 @@ import { Canvas } from '@react-three/fiber';
 import PlaySound from './animation/PlaySound';
 import Button from './ui/Button';
 import VerticalDivider from './ui/VerticalDivider';
+import IconButton from './ui/IconButton';
+import GlobeIcon from './ui/icons/GlobeIcon';
+import DropIcon from './ui/icons/DropIcon';
 
 type AnimationPagePropsType = {
   audioFile: string;
@@ -76,39 +79,43 @@ const AnimationPage = ({
   return (
     <div className="flex flex-col items-center">
       <p className="py-12">{audioFileName}</p>
-      <div className="flex flex-col w-full px-4 md:px-12 md:flex-row md:space-x-4">
-        <div className="w-full h-64 md:h-98 md:w-2/3">
-          <Suspense fallback="Loading">
-            <Canvas camera={{ position: [0, 0, 2], far: 50 }}>
-              {audioFile != null && (
-                <>
-                  <PlaySound hasRainbowColor={hasColor} isLinear={isLinear} url={audioFile} />
-                  <OrbitControls enableZoom={false} />
-                  <ambientLight />
-                  <pointLight position={[10, 10, 10]} />
-                </>
-              )}
-            </Canvas>
-          </Suspense>
-        </div>
-
-        <div className="flex flex-col items-center justify-center w-full py-8 md:w-1/3">
-          <div className="text-sm md:text-xs grid grid-cols-2 gap-4">
-            {/* Row 1 */}
-            <p className="text-gray-400">Wireframe</p>
-            <label className="flex items-center cursor-pointer">
-              <input checked={isLinear} type="checkbox" onChange={handleToggleLinear} />
-              <span className="ml-2">Linear</span>
-            </label>
-            {/* Row 2 */}
-            <p className="text-gray-400">Colour</p>
-            <label className="flex items-center cursor-pointer">
-              <input checked={hasColor} type="checkbox" onChange={handleToggleColor} />
-              <span className="ml-2">Rainbow</span>
-            </label>
-          </div>
-        </div>
+      <div className="w-full h-64 md:h-98">
+        <Suspense fallback="Loading">
+          <Canvas camera={{ position: [0, 0, 2], far: 50 }}>
+            {audioFile != null && (
+              <>
+                <PlaySound hasRainbowColor={hasColor} isLinear={isLinear} url={audioFile} />
+                <OrbitControls enableZoom={false} />
+                <ambientLight />
+                <pointLight position={[10, 10, 10]} />
+              </>
+            )}
+          </Canvas>
+        </Suspense>
       </div>
+
+      <div className="flex items-center justify-center w-24 py-8 ">
+        <IconButton
+          active={isLinear}
+          icon={
+            <div className="w-full">
+              <GlobeIcon />
+            </div>
+          }
+          onClick={handleToggleLinear}
+        />
+
+        <IconButton
+          active={hasColor}
+          icon={
+            <div className="flex items-center w-5/12 m-auto md:w-1/2">
+              <DropIcon />
+            </div>
+          }
+          onClick={handleToggleColor}
+        />
+      </div>
+
       <Button disabled={areInstructionsShown} label="Mint NFT" onClick={handleMintNFTClick} />
 
       {areInstructionsShown && (
@@ -117,7 +124,6 @@ const AnimationPage = ({
             <p className="text-center">Oops, we’re still working on one-tap minting!</p>
             <p className="text-xs">In the meantime, please follow the instructions.</p>
           </div>
-
           <VerticalDivider short />
           <div className="flex flex-col md:space-x-4 md:space-y-0 space-y-8 md:flex-row">
             {INSTRUCTIONS.map((instruction, index) => (
