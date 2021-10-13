@@ -51,7 +51,7 @@ const Analyzer = forwardRef<THREE.Audio<AudioNode>, AnalyzerPropsType>(
           if (mesh.current.morphTargetDictionary) {
             mesh.current.morphTargetDictionary.Displace = data / 200;
           }
-          mesh.current.morphTargetInfluences = [data / 400];
+          mesh.current.morphTargetInfluences = [data / 200];
         }
       }
     });
