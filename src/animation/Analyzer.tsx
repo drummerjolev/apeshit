@@ -4,6 +4,7 @@ import React, { forwardRef, useEffect, useRef } from 'react';
 import { useFrame } from '@react-three/fiber';
 import { useAnimations, useGLTF } from '@react-three/drei';
 
+const GROUP_SCALE = 2.23;
 const DEFAULT_MESH_SCALE = 0.25;
 
 type AnalyzerPropsType = {
@@ -43,22 +44,26 @@ const Analyzer = forwardRef<THREE.Audio<AudioNode>, AnalyzerPropsType>(
         const data = analyser.current.getAverageFrequency();
 
         if (mesh.current && Object.keys(actions).length > 0 && data >= 50) {
-          // mesh.current.scale.x =
-          //   mesh.current.scale.y =
-          //   mesh.current.scale.z =
-          //     (data / 100) * 0.01 + DEFAULT_MESH_SCALE;
+          const displacementValue = data / 200;
 
           if (mesh.current.morphTargetDictionary) {
-            mesh.current.morphTargetDictionary.Displace = data / 200;
+            mesh.current.morphTargetDictionary.Displace = displacementValue;
           }
-          mesh.current.morphTargetInfluences = [data / 200];
+          mesh.current.morphTargetInfluences = [displacementValue];
         }
+      }
+    });
+
+    useFrame((_state, delta) => {
+      if (mesh.current && mesh.current.rotation) {
+        mesh.current.rotation.x -= (0.01 * Math.PI) / 180;
+        mesh.current.rotation.y += delta * 0.15;
       }
     });
 
     return (
       <group ref={group} dispose={null}>
-        <group name="Armature" position={[0, -1, 0]} scale={2.23}>
+        <group name="Armature" position={[0, -1, 0]} scale={GROUP_SCALE}>
           <mesh
             ref={mesh}
             geometry={nodes.Globe_1.geometry}

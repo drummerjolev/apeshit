@@ -20,22 +20,22 @@ const GlobeIcon = (): React.ReactElement => (
     <path
       d="M15 0.833344L14.8522 1.06556C11.3585 6.55564 11.2111 13.5339 14.4697 19.1667V19.1667"
       stroke="white"
-      stroke-linecap="round"
+      strokeLinecap="round"
     />
     <path
       d="M12.5 0.833344V0.833344C6.30653 5.37522 6.30653 14.6248 12.5 19.1667V19.1667"
       stroke="white"
-      stroke-linecap="round"
+      strokeLinecap="round"
     />
     <path
       d="M17.5 0.833344V0.833344C23.6935 5.37522 23.6935 14.6248 17.5 19.1667V19.1667"
       stroke="white"
-      stroke-linecap="round"
+      strokeLinecap="round"
     />
     <path
       d="M15 19.1667V19.1667C18.5591 13.5738 18.5591 6.42622 15 0.833322V0.833322"
       stroke="white"
-      stroke-linecap="round"
+      strokeLinecap="round"
     />
   </svg>
 );
