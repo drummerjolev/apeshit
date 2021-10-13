@@ -21,6 +21,7 @@ const FOOTER_CONTENTS = [
   {
     role: 'Music',
     name: 'Nocturnal',
+    link: 'https://linktr.ee/nocturnal.band',
   },
 ];
 
