@@ -81,7 +81,7 @@ const AnimationPage = ({
       <p className="py-12">{audioFileName}</p>
       <div className="w-full h-64 md:h-98">
         <Suspense fallback="Loading">
-          <Canvas camera={{ position: [0, 0, 2], far: 50 }}>
+          <Canvas camera={{ position: [0, 0, 2.5], far: 50 }}>
             {audioFile != null && (
               <>
                 <PlaySound hasRainbowColor={hasColor} isLinear={isLinear} url={audioFile} />
