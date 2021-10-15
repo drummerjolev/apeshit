@@ -33,8 +33,10 @@ const LandingPage = ({
       <p className="text-xs">We do not store your music.</p>
     </div>
     <VerticalDivider />
-    <p className="text">Our vision</p>
+    <p className="text-2xl font-anton">OUR VISION</p>
     <ReactPlayer url={VIMEO_URL} controls />
+    <VerticalDivider />
+    <p className="text-2xl font-anton">BY APESHIT STUDIOS</p>
   </div>
 );
 
