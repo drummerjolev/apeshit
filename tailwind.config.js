@@ -6,7 +6,7 @@ module.exports = {
     fontFamily: {
       anton: ['Anton', 'sans'],
       italiana: ['Italiana', 'serif'],
-      roboto: ['Roboto', 'sans'],
+      roboto: ['Roboto Condensed', 'sans'],
     },
     extend: {
       spacing: {
