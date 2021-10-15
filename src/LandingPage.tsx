@@ -1,5 +1,7 @@
 // HMJ
 
+import ReactPlayer from 'react-player';
+
 import UploadButton from './ui/UploadButton';
 import VerticalDivider from './ui/VerticalDivider';
 
@@ -8,6 +10,8 @@ type LandingPagePropsType = {
   setAudioFileName: (name: string) => void;
   setIsUploading: (isUploading: boolean) => void;
 };
+
+const VIMEO_URL = 'https://vimeo.com/632341476';
 
 const LandingPage = ({
   setAudioFile,
@@ -28,6 +32,9 @@ const LandingPage = ({
       <p className="text-xs">.wav or .mp3</p>
       <p className="text-xs">We do not store your music.</p>
     </div>
+    <VerticalDivider />
+    <p className="text">Our vision</p>
+    <ReactPlayer url={VIMEO_URL} controls />
   </div>
 );
 
