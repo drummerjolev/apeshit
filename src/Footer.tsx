@@ -45,7 +45,10 @@ const Footer = (): React.ReactElement => (
         </div>
       ))}
     </div>
-    <div className="flex flex-col items-center justify-center w-full text-white md:flex-row md:space-x-8 space-x-0 space-y-8 md:space-y-0">
+    <div
+      className="flex flex-col items-center justify-center w-full text-white md:flex-row md:space-x-8 space-x-0 space-y-8 md:space-y-0"
+      style={{ backgroundColor: '#08080A' }}
+    >
       <img alt="preview" className="h-32 md:h-48" src="preview-img.png" />
       <p className="text-2xl text-center font-anton">Be the first to collect an Apeshit NFT</p>
       <a href={SOLSEA_LINK} rel="noreferrer" target="_blank">
